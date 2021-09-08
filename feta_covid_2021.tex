@@ -387,7 +387,7 @@ A few possible approaches exist, for example Exponential Random Graph models.
 \draw<2-> [net con] (soft) -- (opt);
 \node<3->[box] at (8.5,3.5) (net){Generated \\ synthetic network};
 \draw<3-> [net con] (opt) -- (net);
-\draw<4-> [black, fill=green,opacity=0.2] (-1,7.0) rectangle (6.5,5.5);
+\draw<4-> [black, fill=green,opacity=0.2] (-1,7.0) rectangle (2.5,5.5);
 \node<4-> at (1,5.7) {Stays private};
 \draw<4-> [black, fill=blue,opacity=0.2] (3,5) rectangle (10,2);
 \node<4->  at (7,2.8) {Released to world};
@@ -456,10 +456,10 @@ edges for random selection.
 \item The object model is given a lot of attention in networks literature.
 \item BA model synonymous with preferential attachment, forget $m=3$. 
 \item Operation model is rarely studied yet governs vital network parameters e.g. $\langle k \rangle$.
-\item Typical operation model in the literature will produce a fixed node-edge ratio.
+\item Typical operation model in the literature will produce a fixed node-edge ratio. Real networks -- densification.
 \end{itemize}
 \centering{
-\includegraphics[width=10cm]{link_node_evolve} \\
+\includegraphics[width=8cm]{link_node_evolve} \\
 }
 }
 
@@ -557,6 +557,7 @@ Quick to add in new models for testing. They can then be combined as with the ot
 \end{tikzpicture}
 }
 }
+
 \frame{
 \frametitle{The likelihood of FETA model}
 \begin{itemize}
@@ -663,6 +664,7 @@ $$
 \item Finds the most likely set of change points for models that change in time.
 \end{itemize}
 \end{block}
+\pause
 
 \begin{block}{Fails to solve other important problems}
 \begin{itemize}
@@ -677,18 +679,18 @@ $$
 \frametitle{Conclusion: path to producing synthetic network models}
 
 \begin{itemize}
-\item Alternative approaches for the ``object" model exist.
+\item Alternative approaches for the ``object" model:
 \begin{itemize}
 \item ``Choosing to grow a graph", Overgoor, Benson, Ugander 2020 is somewhat similar but uses a logit framework for links as choices.
 \item ``Clustering and preferential attachment in growing networks" Newman, 2001 works for a restricted set of models.
 \end{itemize}
-\item None of these including FETA yet work as software that a user can easily work with to get the ``best possible" synthetic network.
-\item The ``operation model" part of this does not seem to have attracted much attention.
+\item No software lets user easily create a synthetic version of their graph.
+\item The ``operation model" has not attracted much attention.
 \begin{itemize}
 \item These models quickly become analytically intractable but the detail given is vital for an accurate network model. 
 \item In modelling pandemics, the number of contacts added and the time order are extremely critical. 
 \end{itemize}
-\item For the next pandemic we want to be able to say to a person with confidential infection network data: \alert{``This software will produce the best possible synthetic version that preserves privacy."} We cannot do that today.
+\item For the next pandemic we want to be able to say to a person with confidential infection/contact data: {\color{blue} ``This software will produce the best possible synthetic version that preserves privacy."} \alert{We cannot do that today.}
 \end{itemize}
 
 }
