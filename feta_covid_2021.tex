@@ -3,7 +3,17 @@
 \usetheme{Madrid}
 \usecolortheme{seahorse}
 \usepackage{multirow}
-
+\usepackage{amsthm}
+\newcommand{\mn}{\mathbb{N}} %math N%
+\newcommand{\mz}{\mathbb{Z}} %math Z%
+\newcommand{\bG}{\boldsymbol{G}}
+\newcommand{\bg}{\boldsymbol{g}}
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\var}[1]{\text{var}\left(#1\right)}
+\newcommand{\Esym}{\text{E}}
+\newcommand{\E}[1]{\Esym\left[#1\right]}
+\newcommand{\Probsym}{\mathbb{P}}
+\newcommand{\Prob}[1]{\Probsym\left[#1\right]}
 %%%<
 \newcommand{\backupbegin}{
    \newcounter{finalframe}
@@ -112,13 +122,12 @@
 
 \frame{
 
-\title[FETA]{Freeing vital research with synthetic network data}
+\title[Synthetic networks]{Freeing vital research with synthetic network data}
 
 \setcounter{framenumber}{0}
 
 \begin{center}
-\Huge{Creating‌ ‌synthetic‌ ‌models‌ ‌from‌ ‌sensitive‌ ‌data‌ ‌--‌ ‌preparing‌ ‌for‌ ‌future‌‌
-epidemics}
+\Huge{Creating‌ ‌synthetic‌ ‌models‌ ‌from‌ ‌sensitive‌ ‌data‌: \\ ‌ ‌preparing‌ ‌for‌ ‌future‌‌ epidemics}
 
 
 \vspace{0.2cm}
@@ -128,14 +137,11 @@ epidemics}
 \vspace{0.2cm}
 
 \scriptsize{\raggedright
-{\color{blue} Presenter: }Richard G. Clegg,  \\}
-\scriptsize{\raggedright
-%Work joint with the {\color{blue} Network-as-a-Service project}.  \\
-{
-    {\color{blue} FETA written by Naomi Arnold and Richard Clegg}
+{\color{blue} Presenter: }Richard G. Clegg  \\
+    {\color{blue} FETA written by Naomi A. Arnold and Richard G. Clegg}
 }
 
-%\tiny{(Prepared using \LaTeX \;and beamer.)}
+\tiny{(Prepared using \LaTeX \;and beamer.)}
 \end{center}
 }
 
@@ -176,26 +182,6 @@ epidemics}
 
 \tikzstyle{net con} = [draw=black,ultra thick,->]
 
-\frame{
-\frametitle{Synthetic graph data: an unmissable opportunity}
-
-\begin{block}{Genuinely important problem}
-Network data never more important. Disease transmission, fraud in finance, hate in social networks. Network data never harder to obtain. 
-\end{block}
-\pause
-%\begin{block}{Put synthetic networks on the same footing as time series}
-%Time series analysis has standard theoretical models (ARIMA, FARIMA, ARCH, GARCH or TGAN), well known libraries (in python, R, matlab) to generate these models and companies which do this as a service. 
-%\end{block}
-\pause
-\begin{block}{Improve world-leading open source synthetic network software }
-FETA v3.0 open source software (MIT licence) creates synthetic networks. Needs further development and commercial use cases to drive adoption. 
-\end{block}
-\pause
-\begin{block}{Clear route to commercial use}
-Good contacts with commercial organisations interested in temporal network modelling. Direct route to having software used. 
-\end{block}
-
-}
 
 \frame{
     
@@ -211,8 +197,7 @@ If researchers had access could revolutionise understanding.
 \end{block}
 \pause
 \begin{itemize}
-\item Use case: Financial data sets (network of transactions) --  detecting fraud, money laundering, tracing stolen money. 
-\item Use case: Social network (network of interactions) -- spread of hate, harassment, fake news, misinformation. 
+\item Imagine a world where everyone who built a centralised Covid tracing app could also release a `best possible' privacy preserving version of the contact network with no privacy concerns.  
 \end{itemize}
 
 }
@@ -373,64 +358,128 @@ Network data is incredibly hard to anonymise well.
 
 }
 
+
 \frame{
-\frametitle{Proposal in a nutshell}
-Twelve month project with one postdoctoral researcher (at QMUL). 
-\begin{block}{Develop an existing tool for synthetic network data}
-FETA (Framework for Evolving Topology Analysis) is an existing open source (MIT licence) tool developed at QMUL. We will:
-\begin{itemize}
-\item Specialise for use cases in finance (crypto) and social networks.
-\item Identify extra use cases at Turing and Accenture.
-\item Produce reference synthetic networks for these use cases.
-\end{itemize}
+\frametitle{Synthetic temporal networks to share private network data}
+
+\begin{block}{Replicating target temporal network}
+Want to create a probabilistic model giving rules to construct a network that has ``the same properties" but is ``low parameter" (cannot leak much information). 
 \end{block}
-\pause
-\begin{itemize}
-\item Previous ATI project Raphtory develop PhD software led to successful spin out company (Chorograph $\rightarrow$ Pometry).
-\item Working with commercial partners in cryptocurrency and social networks area.
-\end{itemize}
+
+\begin{block}{Why temporal networks?}
+Timestamps and arrival order gives more information to work with. Existing body of work on growing network models. 
+\end{block}
+
+\begin{block}{Static networks}
+A few possible approaches exist, for example Exponential Random Graph models. 
+\end{block}
 }
 
 \frame{
-    \frametitle{FETA project team}
-
+\frametitle{Synthetic temporal networks -- the ideal solution}
+\centering{
 \begin{tikzpicture}%[show background grid]
-\draw[white] (-5,-3) rectangle (5,3);
-\node  [inner sep=0pt] at (-4,0) (fc) {\includegraphics[width=1.3cm]{felix}};
-\node[align=center] [below= 1pt of fc]  {Felix Cuadrado \\ CoI (QMUL) \\ Expert Graph Systems};
-\node [inner sep=0pt] at (0,1.5) (rc) {\includegraphics[width=1.3cm]{rich}};
-\node[align=center] [above= 1pt of rc]  {Richard Clegg \\ PI (QMUL) \\ Creator of FETA};
-\node [inner sep=0pt] at (4,0) (na) {\includegraphics[width=1.3cm]{naomi}};
-\node[align=center] [below= 1pt of na]  {Naomi Arnold \\ PDRA (QMUL) \\ Programmer of FETA};
-\node [inner sep=0pt] at (0,-1.5) (ab) {\includegraphics[width=1.3cm]{andrea}};
-\node[align=center] [below= 1pt of ab]  {Andrea Baronchelli \\ CoI (City) \\ Expert Finance networks};
-\path[draw](rc) edge[cloudconn] (na);
-\path[draw] (rc) edge[cloudconn] (fc);
-\path[draw] (na) edge[cloudconn] (fc);
-\path[draw] (ab) edge[cloudconn] (fc);
-\path[draw] (ab) edge[cloudconn] (na);
-\path[draw] (ab) edge[cloudconn] (rc);
+\draw[white] (-1,-1) rectangle (10,7);
+\node<1->[box] at (0.5,6.5) (targ){Target Network \\ for synthesis};
+\node<1->[box] at (4.5,6.5) (soft){Analysis software};
+\draw<1-> [net con] (targ) -- (soft);
+\node<2->[box] at (4.5,3.5) (opt){Optimal\\ temporal model};
+\draw<2-> [net con] (soft) -- (opt);
+\node<3->[box] at (8.5,3.5) (net){Generated \\ synthetic network};
+\draw<3-> [net con] (opt) -- (net);
+\draw<4-> [black, fill=green,opacity=0.2] (-1,7.0) rectangle (6.5,5.5);
+\node<4-> at (1,5.7) {Stays private};
+\draw<4-> [black, fill=blue,opacity=0.2] (3,5) rectangle (10,2);
+\node<4->  at (7,2.8) {Released to world};
+\node<4->  at (6.8,2.4) {(10s/100s bits of info)};
+\node<5-> [box] at (8.5,1.0) (res) {Research algorithms \\tested};
+\draw<5-> [net con] (net) -- (res);
+\node<6-> [box] at (0.5,1.0) (sol) {Optimal solutions \\ fed back};
+\draw<6-> [net con] (res) -- (sol);
+\draw<6-> [net con] (sol) -- (targ);
 \end{tikzpicture}
 }
+}
+
+\frame{
+\frametitle{Structure of temporal models}
+
+\begin{block}{Probabilistic models}
+Let $\bG= (G_i, G_{i+1}, \ldots, G_{i+n})$ be random variables
+representing the evolution of a graph observed at discrete times with $g_i$ being an observation of $G_i$. Valid models specify $\Prob{G_{t+1} = g_{t+1} | 
+G_t=g_t, G_{t-1} = g_{t-1},\ldots}$
+\end{block}
+
+\begin{itemize}
+\item Rules in models with ordered node arrivals like: 
+\begin{itemize}
+\item Barab{\'a}si--Albert, Bianconi--Barab{\'a}si model, Temporal Preferential Attachment
+\item Jackson--Rogers model (completing friendship triangles)
+\end{itemize}
+\item Rules out models without ordered node arrivals like:
+\begin{itemize}
+\item Randomised Reference models
+\item Erd\H{o}s-R\'{e}nyi, Stochastic Block model
+\item Exponential Random Graph models
+\end{itemize}
+\end{itemize}
+
+}
 
 
 \frame{
-\frametitle{State of the art synthetic network data}
-
-\begin{block}{Link Data Benchmark Council (project partner)}
-LDBC widely used industry standard for synthetic social networks. Software produces synthetic social network data with information about users/posts but with extremely simple graph structure.
+\frametitle{Sub-dividing the temporal network problem}
+\begin{block}{Operation model}
+\begin{itemize}
+\item Process to select an operation on the network.
+\item Could be: \alert{add node}, 
+\alert{add edge}, 
+\alert{remove node} and so on.
+\end{itemize}
 \end{block}
 
-\begin{block}{Complex networks based models}
-Based on extremely simple mathematical principles. Examples:
+\begin{block}{Object model}
 \begin{itemize}
-\item Random (Erd\H{o}s--Renyi) -- connect new nodes at random.
-\item Barab\'{a}si--Albert -- connect new nodes with a probability proportional to node degree.
-\item Triangle closure (Jackson) -- connect new node to a random node and a ``friend" of that random node. 
+\item Process selects which nodes/edges are involved in operation
+selected by operation model.
+\item Probabilities are assigned to nodes and potential
+edges for random selection.
+\item Edges selected by assigning probabilities to node pairs.
 \end{itemize}
-Interesting, mathematically tractable but not realistic. 
 \end{block}
 }
+
+\frame{
+\frametitle{Commentary on Operation and Object model}
+
+\begin{itemize}
+\item The object model is given a lot of attention in networks literature.
+\item BA model synonymous with preferential attachment, forget $m=3$. 
+\item Operation model is rarely studied yet governs vital network parameters e.g. $\langle k \rangle$.
+\item Typical operation model in the literature will produce a fixed node-edge ratio.
+\end{itemize}
+\centering{
+\includegraphics[width=10cm]{link_node_evolve} \\
+}
+}
+
+%\frame{
+%\frametitle{Synthetic network data -- some current approaches}
+
+%\begin{block}{Link Data Benchmark Council}
+%LDBC widely used industry standard for synthetic social networks. Software produces synthetic social network data with information about users/posts but with extremely simple graph structure aimed at benchmarking.
+%\end{block}
+
+%\begin{block}{Complex networks based models}
+%Based on sound mathematical principles. Examples:
+%\begin{itemize}
+%\item Random (Erd\H{o}s--Renyi) -- connect new nodes at random.
+%\item Barab\'{a}si--Albert -- connect new nodes with a probability proportional to node degree.
+%\item Triangle closure (Jackson) -- connect new node to a random node and a ``friend" of that random node. 
+%\end{itemize}
+%Interesting, mathematically tractable, but do not capture the complexities of real world networks.
+%\end{block}
+%}
 
 
 
@@ -440,7 +489,7 @@ Interesting, mathematically tractable but not realistic.
 \begin{tikzpicture}
 \node at (0,0) {\begin{minipage}{\textwidth}
 \begin{block}{Creates networks from mixtures of models}
-Example: model is 50\% Barab\'{a}si--Albert and 50\% Erd\H{o}s--Renyi. These mixtures can vary in time.
+Example: model is 50\% Barab\'{a}si--Albert and 50\% Random. These mixtures can vary in time.
 \end{block}
 
 \begin{block}{Assess mathematical likelihood against a target observed network}
@@ -508,76 +557,143 @@ Quick to add in new models for testing. They can then be combined as with the ot
 \end{tikzpicture}
 }
 }
+\frame{
+\frametitle{The likelihood of FETA model}
+\begin{itemize}
+\item Let $M(\btheta)$ be a parameterised FETA model with parameters $\btheta$.
+\item Define $f_{i}(g_i)= \Prob{G_{i}=g_i| M(\btheta), G_{i-1}=g_{i-1}, 
+G_{i-2}=g_{i-2}, \ldots}$.
+\item Given the observations $\bg=(g_i, g_{i-1}, \ldots, g_1)$, the likelihood of the model $M(\btheta)$ is given by: \\
+$L(M(\btheta) | \bg ) = \prod_{k=i+1}^{k=i+n} f_k(g_k)$.
+\item This is the likelihood that the observations arose from the proposed model. 
+\item This ability to assign true likelihood to the
+graph evolution which is key to the FETA process.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Object model components}
+Throughout $k$ is a normalising constant such that $\sum_i p_i = 1$
+for all nodes considered.  
+$p_i$ is the probability of picking node
+$i$ (at the stage being considered).
+
+\begin{itemize}
+\item Random model $M_0 \quad p_i = 1/k$.
+\item Preferential attachment $M_d \quad p_i = d_i /k$.
+\item PFP $M_p(\delta) \quad p_i = d_i^{1+\delta \log_{10} (d_i)}/k$  where $\delta$ is a parameter.
+\item Degree power $M_d(\alpha) \quad p_i = d_i^{\alpha}/k$ where $\alpha$ is a parameter.
+\item Triangle model $M_t(N) = 1/k$ if node in neighbourhood of $N$ most recently chosen.
+\item Singleton model $M_1(N) = 1/k$ if node has degree 1 $0$ otherwise.
+\item Doubleton model $M_2(N) = 1/k$ if node has degree 2 $0$ otherwise.
+\end{itemize}
+}
+
+
+\section {Testing FETA}
+
+\subsection{Artificial tests}
+
+\frame{
+\frametitle{Artificial tests}
+\begin{itemize}
+\item Perhaps the most convincing test of such a model is its ability to
+recover parameters from a known model.
+\item Create a realisation of a graph with known $M(\btheta)$.  
+\item From this graph try to recover $\btheta$ with maximum likelihood.
+\item Linear parameters of model can be assessed ``in parallel" (model tracks likelihood for a range of answers simultaneously).
+\item Other (non-linear) parameters can be found from ``parameter sweeps" 
+(assessing the likelihood for many values of that parameter).
+\item Look at a measure $c_0$ which gives a ``human readable" likelihood relative to a null model of ``random" connections.
+\end{itemize}
+}
+
+\frame{
+\frametitle{Sweep one parameter (10,000 link network)}
+\centering{
+\includegraphics[width=10cm]{deltasweep} \\
+}
+PFP model $M= M_p(0.05)$.  Correct answer is $\delta = 0.05$.
+}
+
+\frame{
+\frametitle{Sweep two parameters (10,000 link network)}
+\centering{
+\includegraphics[width=8cm]{art1_data} \\
+}
+Correct model $M = 0.5 M_2 + 0.5 M_d(0.5)$
+fitted $M= \beta_1 M_2 + (1-\beta_1) M_d(\alpha)$.
+}
 
 
 \frame{
-\frametitle{Potential beneficiaries -- commercial}
+\frametitle{Models which change in time -- artificial data}
+\begin{itemize}
+\item Model changes once at time $T$.  Use the ``degree power" model and change the power.
+\item Let $p_i(t)$ be the probability of choosing $i$ at time $t$.
+\item Let $d_i(t)$ be the degree of $i$ at time $t$.
+$$p_i(t) =
+\begin{cases} d_i(t)^\alpha/k & t < T \\
+d_i(t)^\beta/k & t \geq T.
+\end{cases} 
+$$
+\item Now we can grow a graph using this model for different $\alpha$ and $\beta$.
+\item Already shown for a long section of data we can recover the parameter.
+\item Can we locate the point at which the change occurs?
+\end{itemize}
+}
+
+\subsection{Finding the change point}
+
+
+\frame{
+\frametitle{Finding the change point -- 10000 node experiment}
+\begin{center}
+\includegraphics[height=0.8\textheight]{DP10000_diff_markers}
+\end{center}
+}
+
+\frame{
+\frametitle{Critical assessment of FETA to generate synthetic network}
+
+\begin{block}{Solves half the problem fairly well}
+\begin{itemize}
+\item Tell which of a set of models (and linear combination of models) has highest likelihood.
+\item Correctly recovers parameters for artificial models (even close models that produce the same degree distribution). 
+\item Finds the most likely set of change points for models that change in time.
+\end{itemize}
+\end{block}
+
+\begin{block}{Fails to solve other important problems}
+\begin{itemize}
+\item Fails to capture clustering and assortativity on most data sets.
+\item Requires considerable user intervention.
+\item Tells you nothing about the operation model (we \alert{cheat} and clone it). 
+\end{itemize}
+\end{block}
+}
+
+\frame{
+\frametitle{Conclusion: path to producing synthetic network models}
 
 \begin{itemize}
-\item Link Data Benchmark Council (social networks)
+\item Alternative approaches for the ``object" model exist.
 \begin{itemize}
-\item Interactions will mutually improve products.
-\end{itemize} 
-\item Chainalysis and Mishcon de Reya (blockchain)
-\begin{itemize}
-\item Will benefit from analysis and ability to release sensitive data.
+\item ``Choosing to grow a graph", Overgoor, Benson, Ugander 2020 is somewhat similar but uses a logit framework for links as choices.
+\item ``Clustering and preferential attachment in growing networks" Newman, 2001 works for a restricted set of models.
 \end{itemize}
-\item Pometry (previously Chorograph) (big data analysis)
+\item None of these including FETA yet work as software that a user can easily work with to get the ``best possible" synthetic network.
+\item The ``operation model" part of this does not seem to have attracted much attention.
 \begin{itemize}
-\item Spin out developed from previous Turing project Raphtory. Currently closing \pounds 2 million seed funding on graph networks.
+\item These models quickly become analytically intractable but the detail given is vital for an accurate network model. 
+\item In modelling pandemics, the number of contacts added and the time order are extremely critical. 
 \end{itemize}
-\item Moogsoft (Artificial Intelligence/Computer networks)
-\begin{itemize}
-\item Uses networks from FETA, sponsoring PhD involving FETA. 
-\end{itemize} 
-\item Accenture (consultancy)
-\begin{itemize}
-\item We will seek extra project partners among Accenture clients interested in state-of-the-art network data.
-\item Potential benefit for Accenture and client organisations.
-\end{itemize}
+\item For the next pandemic we want to be able to say to a person with confidential infection network data: \alert{``This software will produce the best possible synthetic version that preserves privacy."} We cannot do that today.
 \end{itemize}
 
 }
 
-\frame{
-\frametitle{Potential beneficiaries -- wider}
 
-\begin{itemize}
-\item Complex networks research enabled by synthetic data
-\begin{itemize}
-\item Conferences right now are full of potentially ground-breaking research with no data to support the assertions. 
-\item A small number of well-regarded synthetic data sets in finance, social networks, health (amongst others) could be game changing. 
-\end{itemize} 
-\item Longer term public benefits
-\begin{itemize}
-\item Social networks -- improved understanding of hate and misinformation.
-\item Financial networks -- detection of fraud and money laundering.
-\item Health -- increased understanding of disease transmission and mitigation strategies.
-\item Other areas -- very general approach working with any network to better understand and model it.
-\end{itemize}
-\end{itemize}
-
-}
-
-\frame{
-\frametitle{Summary of opportunity}
-
-\begin{block}{Timely problem}
-Valuable network data is often collected but also often associated with major privacy concerns. No standard tool for synthetic network data creation exists. 
-\end{block}
-\pause
-%\begin{block}{Put synthetic networks on the same footing as time series}
-%Time series analysis has standard theoretical models (ARIMA, FARIMA, ARCH, GARCH or TGAN), well known libraries (in python, R, matlab) to generate these models and companies which do this as a service. 
-%\end{block}
-\begin{block}{A small investment can make a huge difference}
-FETA v3.0 is ``nearly there" and already does things that no other software can do in a space that is very important.
-\end{block}
-\pause
-\begin{block}{Right team, right collaborators}
-The team is world-leading in this area and has a great set of collaborators in the use case areas. 
-\end{block}
-
-}
 
 \appendix
 \backupbegin
@@ -593,33 +709,5 @@ The team is world-leading in this area and has a great set of collaborators in t
 }
 }
 \backupend
-
-
-%\frame[noframenumbering]{
-%\frametitle{Project team}
-
-%\begin{itemize}
-%\item Richard Clegg (Queen Mary) -- principal investigator
-%\begin{itemize}
-%\item Originated the FETA idea wrote FETA version 1 and 2.
-%\item Mathematician and statistician specialising in complex networks.
-%\end{itemize}
-%\item Felix Cuadrado (Queen Mary) -- Co Investigator
-%\begin{itemize}
-%\item World leading expert in graph analysis at scale.
-%\item 
-%\end{itemize}
-%\item Andrea Baronchelli (City University) -- Co Investigator
-%\begin{itemize}
-%\item World leading expert in analysis of cryptocurrency networks.
-%\item 
-%\end{itemize}
-%\item Naomi Arnold (Queen Mary) -- Researcher
-%\begin{itemize}
-%\item Lead programmer on FETA (version 3).
-%\item Submitting PhD on FETA and complex networks in August 2021.
-%\end{itemize}
-%\end{itemize}
-%}
 
 \end{document}
